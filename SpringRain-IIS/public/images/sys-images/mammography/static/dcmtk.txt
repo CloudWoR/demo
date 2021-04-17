@@ -1,0 +1,8 @@
+dump2dcm template.dump template.dcm
+
+img2dcm   -i BMP view.bmp   out.dcm   --series-from    template.dcm
+img2dcm   view.jpg   out.dcm   --series-from    template.dcm
+
+dcmdjpeg out.dcm push.dcm
+
+storescu -aec pa53001FIR 192.168.11.220 2104 -v out.dcm
