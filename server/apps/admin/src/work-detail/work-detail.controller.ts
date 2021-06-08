@@ -34,37 +34,13 @@ class findAllDto {
 @ApiTags('影像科工作队列API')
 @Controller('work-detail')
 export class WorkDetailController {
-  constructor(
-    @InjectRepository(tReportInfoKiosk)
-    private readonly pacs: Repository<tReportInfoKiosk>,
-    private readonly service: WorkDetailService,
-  ) {}
+  constructor(private readonly service: WorkDetailService) {}
 
-  @Get('/initial:date')
-  @ApiOperation({ summary: '获取指定日期全天内容，并缓存数据至本地' })
-  async initail(@Param('date') date: string): Promise<number> {
-    const targetDate = utils.dateFormat(date);
-    const updateCount = await this.service.initail(targetDate);
-    return updateCount;
+  @Get()
+  @ApiOperation({ summary: '测试' })
+  async updateTest() {
+    await this.service.updateDB();
   }
-
-  // 获取指定日期全部列表，参数：date，modality，dateKey
-  // @Post()
-  // @ApiOperation({ summary: '获取指定日期全天内容' })
-  // index(@Body() body: findAllDto) {
-  //   const startDate = moment(body.date).format('YYYY-MM-DD 00:00:00');
-  //   const endDate = moment(body.date).format('YYYY-MM-DD 23:59:59');
-  //   const result = this.service.baseFind({
-  //     where: {
-  //       [body.dateKey]: Between(startDate, endDate),
-  //       Registrar: Not(In(['代永兵', '康舒雅', '陈雪', '薛惠玲'])),
-  //       PatientType: body.patientType || In(['门诊', '住院', '体检']),
-  //       Modality: body.modality || Not(''),
-  //       ModalityType: body.modalityType || Not(''),
-  //     },
-  //   });
-  //   return result;
-  // }
 
   // 通过传入组合参数来获取工作明细
   @Post()

@@ -23,8 +23,10 @@
                 </q-list>
               </q-menu>
             </q-btn>
+            |
+            <q-btn @click="register">图像编辑器</q-btn>
           </div>
-          <div class="col">
+          <!-- <div class="col">
             <q-btn label="选择日期">
               <q-menu
                 transition-show="flip-right"
@@ -37,10 +39,10 @@
                 />
               </q-menu>
             </q-btn>
-          </div>
+          </div> -->
           <div class="col">
-            <q-btn @click="register"></q-btn>
-            <q-btn @click="sequelize">sequelize</q-btn>
+            <!-- <q-btn @click="register">图像编辑器</q-btn> -->
+            <!-- <q-btn @click="sequelize">sequelize</q-btn> -->
           </div>
         </div>
         <q-separator />
@@ -132,7 +134,7 @@
 
 <script>
 import { ipcRenderer } from 'electron'
-import moment from 'moment'
+// import moment from 'moment'
 export default {
   components: {
   },
@@ -163,12 +165,12 @@ export default {
     }
   },
   async mounted () {
-    const start = moment().format('YYYY-MM-DD') + ' 00:00:00'
-    const end = moment().format('YYYY-MM-DD') + ' 23:59:59'
-    const sql = `SELECT * from tReportInfoKiosk where DJTime BETWEEN '${start}' and '${end}' and ModalityType = 'MG'`
-    console.log('sql: ', sql)
-    this.patientList = await ipcRenderer.invoke('querySqlServer', sql)
-    console.log('sql: ', this.patientList)
+    // const start = moment().format('YYYY-MM-DD') + ' 00:00:00'
+    // const end = moment().format('YYYY-MM-DD') + ' 23:59:59'
+    // const sql = `SELECT * from tReportInfoKiosk where DJTime BETWEEN '${start}' and '${end}' and ModalityType = 'MG'`
+    // console.log('sql: ', sql)
+    // this.patientList = await ipcRenderer.invoke('querySqlServer', sql)
+    // console.log('sql: ', this.patientList)
   },
   methods: {
     async sequelize () {

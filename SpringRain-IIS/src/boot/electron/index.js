@@ -49,6 +49,6 @@ export default async ({ app, router, Vue, publicPath, store }) => {
     sessionStorage.setItem('access_token', 123456)
     // 强制指定用户类型，等鉴权接口完善后动态修改
     // sessionStorage.setItem('user_role', 'supervise')
-    sessionStorage.setItem('user_role', 'admin')
+    sessionStorage.setItem('user_role', 'supervise')
   }
 }

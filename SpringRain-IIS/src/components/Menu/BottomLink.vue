@@ -1,36 +1,6 @@
 <template>
   <div class="q-py-md q-px-md text-grey-9 ">
-    <div class="row items-center q-gutter-x-sm q-gutter-y-xs">
-      <template v-for="button in buttonList">
-        <template v-if="button.URL">
-          <router-link v-if="button.URL.indexOf('http') === -1"
-                       :key="button.text"
-                       :to="button.URL"
-                       class="drawer-footer-link"
-          >
-            {{ button.text }}
-          </router-link>
-          <a v-else
-             :key="button.text"
-             :href="button.URL"
-             target="_blank"
-             class="drawer-footer-link"
-          >
-            {{ button.text }}
-          </a>
-        </template>
-        <template v-else>
-          <a
-            :key="button.text"
-            :href="button.URL"
-            target="_blank"
-            class="drawer-footer-link"
-          >
-            {{ button.text }}
-          </a>
-        </template>
-      </template>
-    </div>
+    影像科综合信息管理系统
   </div>
 </template>
 

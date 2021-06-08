@@ -96,7 +96,7 @@
             <q-card-section>
               <div class="text-h6">常用字段配置</div>
               <q-separator color="white" />
-              <div class="text-subtitle1">配置用于乳腺钼靶视图编辑时的快捷录入</div>
+              <div class="text-subtitle1">配置用于视图编辑时的快捷录入</div>
             </q-card-section>
 
           </q-card>

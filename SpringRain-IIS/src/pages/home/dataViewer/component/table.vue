@@ -1,7 +1,7 @@
 <template>
   <div>
     <q-table
-      class="my-sticky-header-table"
+      :class="tableStyles"
       :title="tableTitle"
       :data="tableData"
       :columns="columns"
@@ -51,6 +51,12 @@
             </q-list>
           </q-btn-dropdown>
           <q-btn color="warning" push label="重置" @click="reUpate" />
+          <q-btn
+            color="cyan"
+            push :label="tableStyleLable"
+            @click="tableFullscreen"
+            :icon="tableStyles.fullscreen ? 'fullscreen_exit' : 'fullscreen'"
+          />
         </div>
       </template>
     </q-table>
@@ -95,19 +101,27 @@ export default {
           format: val => `${val}`,
           sortable: true
         },
-        {
-          name: 'modalityType',
-          required: true,
-          label: '设备类型',
-          align: 'center',
-          field: 'modalityType',
-          sortable: true
-        },
+        // {
+        //   name: 'modalityType',
+        //   required: true,
+        //   label: '设备类型',
+        //   align: 'center',
+        //   field: 'modalityType',
+        //   sortable: true
+        // },
         {
           name: 'patientType',
           align: 'center',
           label: '患者类型',
           field: 'patientType',
+          sortable: true
+        },
+        {
+          name: 'positiveRate',
+          label: '阳性率',
+          align: 'center',
+          field: 'positiveRate',
+          format: val => `${val}%`,
           sortable: true
         },
         {
@@ -176,23 +190,23 @@ export default {
           field: 'avgCompletionTime',
           format: val => `${moment.duration(val, 'second').asMinutes().toFixed(2)} 分钟`,
           sortable: true
-        },
-        {
-          name: 'positiveRate',
-          label: '阳性率',
-          align: 'center',
-          field: 'positiveRate',
-          format: val => `${val}%`,
-          sortable: true
         }
       ],
-      data: []
+      data: [],
+      tableStyleLable: '全屏',
+      tableStyles: {
+        'my-sticky-header-table': true,
+        fullscreen: false,
+        'absolute-bottom': false
+      }
     }
   },
-  mounted () {
-
-  },
   methods: {
+    tableFullscreen () {
+      this.tableStyles['my-sticky-header-table'] = !this.tableStyles['my-sticky-header-table']
+      this.tableStyles.fullscreen = this.tableStyles['absolute-bottom'] = !this.tableStyles['my-sticky-header-table']
+      this.tableStyleLable = this.tableStyleLable === '全屏' ? '退出全屏' : '全屏'
+    },
     update (key, value) {
       this[key] = value
       this.date = this.date.replace(/\//g, '-')

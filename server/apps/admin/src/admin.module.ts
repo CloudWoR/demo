@@ -15,7 +15,6 @@ import { WorkDetailModule } from './work-detail/work-detail.module';
     CalendarModule,
     SignImageModule,
     WorkDetailModule,
-    PacsdbModule,
     WorklistdbModule,
     ScheduleModule.forRoot(),
   ],

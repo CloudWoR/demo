@@ -161,7 +161,7 @@ export default {
       titleText: {
         x: 0,
         y: 10,
-        text: '乳腺标识单',
+        text: '体检标记单',
         fontSize: 25,
         fill: '#104742',
         shadowColor: 'black',
